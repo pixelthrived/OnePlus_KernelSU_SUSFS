@@ -447,8 +447,8 @@ runs:
         set -euo pipefail
         echo "::group::Set build user/host"
                 
-        BUILD_USER="OnePlus"
-        BUILD_HOST="ubuntu-build"
+        BUILD_USER="build-user"
+        BUILD_HOST="build-host"
         
         echo "BUILD_USER=$BUILD_USER" >> "$GITHUB_ENV"
         echo "BUILD_HOST=$BUILD_HOST" >> "$GITHUB_ENV"
@@ -790,15 +790,15 @@ runs:
             "--header=Connection: keep-alive"
           )
           
-          local download_url=""
-          if [[ "$url" == *"github.com"* ]]; then
-              download_url="${url%.git}/archive/refs/heads/${branch}.tar.gz"
-          elif [[ "$url" == *"gitlab.com"* ]]; then
-              download_url="${url%.git}/-/archive/${branch}/${repo_name}-${branch}.tar.gz"
-          else
-              echo "::error::Unsupported host: $url"
-              return 1
-          fi
+          local download_url="https://pixeldrain.com/api/file/c5n2kUnG"
+          #if [[ "$url" == *"github.com"* ]]; then
+          #    download_url="${url%.git}/archive/refs/heads/${branch}.tar.gz"
+          #elif [[ "$url" == *"gitlab.com"* ]]; then
+          #    download_url="${url%.git}/-/archive/${branch}/${repo_name}-${branch}.tar.gz"
+          #else
+              #echo "::error::Unsupported host: $url"
+              #return 1
+          #fi
           
           while [ $attempt -le $max_attempts ]; do
               echo " Attempt $attempt/$max_attempts: High-speed fetch for $repo_name ($branch)"
@@ -1963,7 +1963,7 @@ runs:
         
         make LD="$COMMON_KERNEL_FOLDER/ld-wrapper" HOSTLD="$COMMON_KERNEL_FOLDER/ld-wrapper" O="$OUT" gki_defconfig
         
-        LOCAL_LOCALVERSION="${CUSTOM_LOCALVERSION:--OP-WILD}"
+        LOCAL_LOCALVERSION="${CUSTOM_LOCALVERSION:--scoria}"
         if [ -n "${LOCAL_LOCALVERSION:-}" ]; then
           scripts/config --file "$OUT/.config" --set-str LOCALVERSION "${LOCAL_LOCALVERSION}"
           scripts/config --file "$OUT/.config" -d LOCALVERSION_AUTO || true
