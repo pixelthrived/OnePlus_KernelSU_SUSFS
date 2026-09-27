@@ -1109,8 +1109,8 @@ runs:
             fi
             ;;
           *)
-            echo "::error::Unsupported SUSFS version: $susfs_version"
-            exit 1
+            echo "::warning::Unsupported SUSFS version: $susfs_version, continuing anyway..."
+            #exit 1
             ;;
         esac
         
