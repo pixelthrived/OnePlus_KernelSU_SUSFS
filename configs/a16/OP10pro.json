@@ -8,7 +8,7 @@
   "os_version": "A16",
   "lto": "thin",
   "zyc_compiler": "",
-  "c_compiler": "kernel_platform/prebuilts-master/clang/host/linux-x86/clang-r416183c/bin",
+  "c_compiler": "kernel_platform/prebuilts/clang/host/linux-x86/clang-r547379/bin",
   "rust_compiler": "",
   "bindgen": "",
   "rust_build": false,
