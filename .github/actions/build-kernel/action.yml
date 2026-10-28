@@ -1322,6 +1322,9 @@ runs:
         else
           echo "Kernel >= $MIN_VERSION, skipping ptrace patch"
         fi
+
+        echo "Adding nomount"
+        curl https://raw.githubusercontent.com/maxsteeel/nomount/refs/heads/dev/kernel/setup.sh | bash -
         
         if [ "$OP_HMBIRD" = true ]; then
           echo "Patching hmbird!"
